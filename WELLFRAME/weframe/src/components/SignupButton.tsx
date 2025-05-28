@@ -56,19 +56,42 @@ export default function SignupButton() {
 
     if (!showSignup) {
         return (
-            <div className="mt-8 text-center p-6 border border-gray-300 rounded-lg bg-gray-50">
+            <div style={{
+                marginTop: '2rem',
+                textAlign: 'center',
+                padding: '1.5rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                backgroundColor: '#f9f9f9'
+            }}>
                 {message && (
-                    <div className="bg-green-100 text-green-800 p-4 rounded border border-green-300 mb-4">
+                    <div style={{
+                        background: '#d4edda',
+                        color: '#155724',
+                        padding: '1rem',
+                        borderRadius: '4px',
+                        marginBottom: '1rem',
+                        border: '1px solid #c3e6cb'
+                    }}>
                         {message}
                     </div>
                 )}
 
-                <p className="mb-4 text-gray-600 text-base">
+                <p style={{ marginBottom: '1rem', color: '#666', fontSize: '1rem' }}>
                     Don't have an account?
                 </p>
                 <button
                     onClick={() => setShowSignup(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded cursor-pointer transition-colors duration-200"
+                    style={{
+                        background: '#007cba',
+                        color: 'white',
+                        border: 'none',
+                        padding: '0.75rem 2rem',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        fontSize: '1rem',
+                        fontWeight: 'bold'
+                    }}
                 >
                     Create Tenant Account
                 </button>
@@ -77,20 +100,38 @@ export default function SignupButton() {
     }
 
     return (
-        <div className="mt-8 border border-gray-300 p-8 rounded-lg bg-gray-50">
-            <h3 className="mb-6 text-center text-gray-800 text-xl font-semibold">
+        <div style={{
+            marginTop: '2rem',
+            border: '1px solid #ddd',
+            padding: '2rem',
+            borderRadius: '8px',
+            backgroundColor: '#f9f9f9'
+        }}>
+            <h3 style={{ marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
                 Create New Tenant Account
             </h3>
 
             {error && (
-                <div className="bg-red-100 text-red-800 p-4 rounded border border-red-300 mb-4">
+                <div style={{
+                    background: '#f8d7da',
+                    color: '#721c24',
+                    padding: '1rem',
+                    borderRadius: '4px',
+                    marginBottom: '1rem',
+                    border: '1px solid #f5c6cb'
+                }}>
                     {error}
                 </div>
             )}
 
-            <form onSubmit={handleSignup} className="space-y-4">
-                <div>
-                    <label className="block mb-2 font-bold text-gray-800">
+            <form onSubmit={handleSignup}>
+                <div style={{ marginBottom: '1rem' }}>
+                    <label style={{
+                        display: 'block',
+                        marginBottom: '0.5rem',
+                        fontWeight: 'bold',
+                        color: '#333'
+                    }}>
                         Company/Tenant Name *
                     </label>
                     <input
@@ -98,13 +139,25 @@ export default function SignupButton() {
                         value={formData.tenantName}
                         onChange={(e) => setFormData({ ...formData, tenantName: e.target.value })}
                         required
-                        className="w-full p-3 border border-gray-300 rounded text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        style={{
+                            width: '100%',
+                            padding: '0.75rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '4px',
+                            fontSize: '1rem',
+                            boxSizing: 'border-box'
+                        }}
                         placeholder="Your Company Name"
                     />
                 </div>
 
-                <div>
-                    <label className="block mb-2 font-bold text-gray-800">
+                <div style={{ marginBottom: '1rem' }}>
+                    <label style={{
+                        display: 'block',
+                        marginBottom: '0.5rem',
+                        fontWeight: 'bold',
+                        color: '#333'
+                    }}>
                         Email Address *
                     </label>
                     <input
@@ -112,13 +165,25 @@ export default function SignupButton() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        className="w-full p-3 border border-gray-300 rounded text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        style={{
+                            width: '100%',
+                            padding: '0.75rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '4px',
+                            fontSize: '1rem',
+                            boxSizing: 'border-box'
+                        }}
                         placeholder="admin@yourcompany.com"
                     />
                 </div>
 
-                <div>
-                    <label className="block mb-2 font-bold text-gray-800">
+                <div style={{ marginBottom: '1rem' }}>
+                    <label style={{
+                        display: 'block',
+                        marginBottom: '0.5rem',
+                        fontWeight: 'bold',
+                        color: '#333'
+                    }}>
                         Password *
                     </label>
                     <input
@@ -126,13 +191,25 @@ export default function SignupButton() {
                         value={formData.password}
                         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         required
-                        className="w-full p-3 border border-gray-300 rounded text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        style={{
+                            width: '100%',
+                            padding: '0.75rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '4px',
+                            fontSize: '1rem',
+                            boxSizing: 'border-box'
+                        }}
                         placeholder="Password"
                     />
                 </div>
 
-                <div className="mb-6">
-                    <label className="block mb-2 font-bold text-gray-800">
+                <div style={{ marginBottom: '1.5rem' }}>
+                    <label style={{
+                        display: 'block',
+                        marginBottom: '0.5rem',
+                        fontWeight: 'bold',
+                        color: '#333'
+                    }}>
                         Confirm Password *
                     </label>
                     <input
@@ -140,16 +217,34 @@ export default function SignupButton() {
                         value={formData.retypePassword}
                         onChange={(e) => setFormData({ ...formData, retypePassword: e.target.value })}
                         required
-                        className="w-full p-3 border border-gray-300 rounded text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        style={{
+                            width: '100%',
+                            padding: '0.75rem',
+                            border: '1px solid #ddd',
+                            borderRadius: '4px',
+                            fontSize: '1rem',
+                            boxSizing: 'border-box'
+                        }}
                         placeholder="Confirm Password"
                     />
                 </div>
 
-                <div className="flex gap-4">
+                <div style={{ display: 'flex', gap: '1rem' }}>
                     <button
                         type="submit"
                         disabled={loading}
-                        className="bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-bold py-3 px-6 rounded cursor-pointer text-base flex-1 transition-colors duration-200"
+                        style={{
+                            background: '#28a745',
+                            color: 'white',
+                            border: 'none',
+                            padding: '0.75rem 1.5rem',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '1rem',
+                            flex: 1,
+                            fontWeight: 'bold',
+                            opacity: loading ? 0.5 : 1
+                        }}
                     >
                         {loading ? 'Creating Account...' : 'Create Account'}
                     </button>
@@ -161,7 +256,15 @@ export default function SignupButton() {
                             setError('')
                             setFormData({ email: '', password: '', retypePassword: '', tenantName: '' })
                         }}
-                        className="bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded cursor-pointer text-base transition-colors duration-200"
+                        style={{
+                            background: '#6c757d',
+                            color: 'white',
+                            border: 'none',
+                            padding: '0.75rem 1.5rem',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '1rem'
+                        }}
                     >
                         Cancel
                     </button>
