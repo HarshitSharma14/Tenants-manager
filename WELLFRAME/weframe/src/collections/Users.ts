@@ -7,6 +7,10 @@ export const Users: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'email',
+    hidden: ({ user }) => {
+      // Hide Users collection from tenant admins
+      return user?.role === 'tenant-admin'
+    }
   },
   hooks: {
     beforeChange: [
@@ -58,7 +62,7 @@ export const Users: CollectionConfig = {
     {
       name: 'role',
       type: 'select',
-      options: ['tenant-admin'],
+      options: ['tenant-admin', 'super-admin'], // Added super-admin option
       defaultValue: 'tenant-admin',
       admin: {
         readOnly: true

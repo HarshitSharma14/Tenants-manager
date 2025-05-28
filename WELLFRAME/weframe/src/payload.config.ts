@@ -28,7 +28,8 @@ export default buildConfig({
       ]
     }
   },
-  collections: [Tenants, Users, Media, Forms, FormSubmissions],
+
+  collections: [Forms, FormSubmissions, Tenants, Users, Media,],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

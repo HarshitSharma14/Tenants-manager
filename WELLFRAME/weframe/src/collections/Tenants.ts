@@ -4,6 +4,7 @@ export const Tenants: CollectionConfig = {
     slug: 'tenants',
     admin: {
         useAsTitle: 'name',
+        hidden: ({ user }) => user?.role === 'tenant-admin' // Hide from tenant admins
     },
     fields: [
         {
