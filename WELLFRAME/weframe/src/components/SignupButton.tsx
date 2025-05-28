@@ -60,38 +60,41 @@ export default function SignupButton() {
                 marginTop: '2rem',
                 textAlign: 'center',
                 padding: '1.5rem',
-                border: '1px solid #ddd',
+                border: '1px solid #333',
                 borderRadius: '8px',
-                backgroundColor: '#f9f9f9'
+                backgroundColor: '#1a1a1a'
             }}>
                 {message && (
                     <div style={{
-                        background: '#d4edda',
-                        color: '#155724',
+                        background: '#0f5132',
+                        color: '#75b798',
                         padding: '1rem',
                         borderRadius: '4px',
                         marginBottom: '1rem',
-                        border: '1px solid #c3e6cb'
+                        border: '1px solid #0a3622'
                     }}>
                         {message}
                     </div>
                 )}
 
-                <p style={{ marginBottom: '1rem', color: '#666', fontSize: '1rem' }}>
+                <p style={{ marginBottom: '1rem', color: '#ccc', fontSize: '1rem' }}>
                     Don't have an account?
                 </p>
                 <button
                     onClick={() => setShowSignup(true)}
                     style={{
-                        background: '#007cba',
+                        background: '#0066cc',
                         color: 'white',
                         border: 'none',
                         padding: '0.75rem 2rem',
                         borderRadius: '4px',
                         cursor: 'pointer',
                         fontSize: '1rem',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        transition: 'background-color 0.2s'
                     }}
+                    onMouseOver={(e) => (e.target as HTMLButtonElement).style.background = '#0052a3'}
+                    onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#0066cc'}
                 >
                     Create Tenant Account
                 </button>
@@ -102,23 +105,28 @@ export default function SignupButton() {
     return (
         <div style={{
             marginTop: '2rem',
-            border: '1px solid #ddd',
+            border: '1px solid #333',
             padding: '2rem',
             borderRadius: '8px',
-            backgroundColor: '#f9f9f9'
+            backgroundColor: '#1a1a1a'
         }}>
-            <h3 style={{ marginBottom: '1.5rem', textAlign: 'center', color: '#333' }}>
+            <h3 style={{
+                marginBottom: '1.5rem',
+                textAlign: 'center',
+                color: '#fff',
+                fontSize: '1.25rem'
+            }}>
                 Create New Tenant Account
             </h3>
 
             {error && (
                 <div style={{
-                    background: '#f8d7da',
-                    color: '#721c24',
+                    background: '#721c24',
+                    color: '#f1aeb5',
                     padding: '1rem',
                     borderRadius: '4px',
                     marginBottom: '1rem',
-                    border: '1px solid #f5c6cb'
+                    border: '1px solid #842029'
                 }}>
                     {error}
                 </div>
@@ -130,7 +138,8 @@ export default function SignupButton() {
                         display: 'block',
                         marginBottom: '0.5rem',
                         fontWeight: 'bold',
-                        color: '#333'
+                        color: '#ccc',
+                        fontSize: '0.9rem'
                     }}>
                         Company/Tenant Name *
                     </label>
@@ -142,10 +151,12 @@ export default function SignupButton() {
                         style={{
                             width: '100%',
                             padding: '0.75rem',
-                            border: '1px solid #ddd',
+                            border: '1px solid #444',
                             borderRadius: '4px',
                             fontSize: '1rem',
-                            boxSizing: 'border-box'
+                            boxSizing: 'border-box',
+                            backgroundColor: '#2a2a2a',
+                            color: '#fff'
                         }}
                         placeholder="Your Company Name"
                     />
@@ -156,7 +167,8 @@ export default function SignupButton() {
                         display: 'block',
                         marginBottom: '0.5rem',
                         fontWeight: 'bold',
-                        color: '#333'
+                        color: '#ccc',
+                        fontSize: '0.9rem'
                     }}>
                         Email Address *
                     </label>
@@ -168,10 +180,12 @@ export default function SignupButton() {
                         style={{
                             width: '100%',
                             padding: '0.75rem',
-                            border: '1px solid #ddd',
+                            border: '1px solid #444',
                             borderRadius: '4px',
                             fontSize: '1rem',
-                            boxSizing: 'border-box'
+                            boxSizing: 'border-box',
+                            backgroundColor: '#2a2a2a',
+                            color: '#fff'
                         }}
                         placeholder="admin@yourcompany.com"
                     />
@@ -182,7 +196,8 @@ export default function SignupButton() {
                         display: 'block',
                         marginBottom: '0.5rem',
                         fontWeight: 'bold',
-                        color: '#333'
+                        color: '#ccc',
+                        fontSize: '0.9rem'
                     }}>
                         Password *
                     </label>
@@ -194,10 +209,12 @@ export default function SignupButton() {
                         style={{
                             width: '100%',
                             padding: '0.75rem',
-                            border: '1px solid #ddd',
+                            border: '1px solid #444',
                             borderRadius: '4px',
                             fontSize: '1rem',
-                            boxSizing: 'border-box'
+                            boxSizing: 'border-box',
+                            backgroundColor: '#2a2a2a',
+                            color: '#fff'
                         }}
                         placeholder="Password"
                     />
@@ -208,7 +225,8 @@ export default function SignupButton() {
                         display: 'block',
                         marginBottom: '0.5rem',
                         fontWeight: 'bold',
-                        color: '#333'
+                        color: '#ccc',
+                        fontSize: '0.9rem'
                     }}>
                         Confirm Password *
                     </label>
@@ -220,10 +238,12 @@ export default function SignupButton() {
                         style={{
                             width: '100%',
                             padding: '0.75rem',
-                            border: '1px solid #ddd',
+                            border: '1px solid #444',
                             borderRadius: '4px',
                             fontSize: '1rem',
-                            boxSizing: 'border-box'
+                            boxSizing: 'border-box',
+                            backgroundColor: '#2a2a2a',
+                            color: '#fff'
                         }}
                         placeholder="Confirm Password"
                     />
@@ -234,16 +254,17 @@ export default function SignupButton() {
                         type="submit"
                         disabled={loading}
                         style={{
-                            background: '#28a745',
+                            background: loading ? '#155724' : '#28a745',
                             color: 'white',
                             border: 'none',
                             padding: '0.75rem 1.5rem',
                             borderRadius: '4px',
-                            cursor: 'pointer',
+                            cursor: loading ? 'not-allowed' : 'pointer',
                             fontSize: '1rem',
                             flex: 1,
                             fontWeight: 'bold',
-                            opacity: loading ? 0.5 : 1
+                            opacity: loading ? 0.7 : 1,
+                            transition: 'all 0.2s'
                         }}
                     >
                         {loading ? 'Creating Account...' : 'Create Account'}
@@ -263,8 +284,11 @@ export default function SignupButton() {
                             padding: '0.75rem 1.5rem',
                             borderRadius: '4px',
                             cursor: 'pointer',
-                            fontSize: '1rem'
+                            fontSize: '1rem',
+                            transition: 'background-color 0.2s'
                         }}
+                        onMouseOver={(e) => (e.target as HTMLButtonElement).style.background = '#5a6268'}
+                        onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#6c757d'}
                     >
                         Cancel
                     </button>
