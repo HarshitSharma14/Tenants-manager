@@ -120,23 +120,76 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Create and manage your forms
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms".
  */
 export interface Form {
   id: number;
   tenant: number | Tenant;
+  /**
+   * The name of your form (e.g., "Contact Us", "Lead Generation")
+   */
   title: string;
+  /**
+   * URL-friendly version (e.g., "contact-us"). This will be used in your public form URL.
+   */
   slug: string;
+  /**
+   * Optional description that appears at the top of your form
+   */
+  description?: string | null;
+  /**
+   * Uncheck to temporarily disable form submissions
+   */
+  isActive?: boolean | null;
+  /**
+   * Message shown to users after successful form submission
+   */
+  successMessage?: string | null;
+  /**
+   * Add and configure the fields for your form. Drag to reorder!
+   */
   fields?:
     | {
-        name: string;
+        /**
+         * Field display order (must be unique)
+         */
+        order: number;
+        /**
+         * Label shown to users
+         */
         label: string;
-        type: 'text' | 'email' | 'textarea';
+        /**
+         * Field name (no spaces, lowercase)
+         */
+        name: string;
+        type: 'text' | 'email' | 'tel' | 'textarea' | 'number' | 'url' | 'date';
         required?: boolean | null;
+        /**
+         * Placeholder text shown inside the field
+         */
+        placeholder?: string | null;
+        /**
+         * Help text shown below the field
+         */
+        helpText?: string | null;
+        /**
+         * Field width in the form
+         */
+        width?: ('full' | 'half') | null;
         id?: string | null;
       }[]
     | null;
+  styling?: {
+    theme?: ('clean' | 'dark' | 'colorful') | null;
+    /**
+     * Text on the submit button
+     */
+    submitButtonText?: string | null;
+    submitButtonColor?: ('blue' | 'green' | 'red' | 'purple') | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -298,14 +351,28 @@ export interface FormsSelect<T extends boolean = true> {
   tenant?: T;
   title?: T;
   slug?: T;
+  description?: T;
+  isActive?: T;
+  successMessage?: T;
   fields?:
     | T
     | {
-        name?: T;
+        order?: T;
         label?: T;
+        name?: T;
         type?: T;
         required?: T;
+        placeholder?: T;
+        helpText?: T;
+        width?: T;
         id?: T;
+      };
+  styling?:
+    | T
+    | {
+        theme?: T;
+        submitButtonText?: T;
+        submitButtonColor?: T;
       };
   updatedAt?: T;
   createdAt?: T;
