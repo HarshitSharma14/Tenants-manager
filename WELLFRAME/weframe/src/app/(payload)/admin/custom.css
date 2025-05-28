@@ -1,0 +1,30 @@
+.signup-toggle {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.signup-toggle button {
+    background: none;
+    border: none;
+    color: #0066cc;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.signup-fields {
+    display: none;
+}
+
+.signup-mode .signup-fields {
+    display: block;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border: 1px solid #c3e6cb;
+}
