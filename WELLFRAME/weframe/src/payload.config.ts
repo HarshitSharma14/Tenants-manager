@@ -48,22 +48,22 @@ export default buildConfig({
     payloadCloudPlugin(),
 
     // Multi-tenant plugin FIRST
-    multiTenantPlugin({
-      collections: {
-        users: {
-          useTenantAccess: true,
-          useBaseListFilter: true,
-        },
-        forms: {
-          useTenantAccess: true,
-          useBaseListFilter: true,
-        },
-        'form-submissions': {
-          useTenantAccess: true,
-          useBaseListFilter: true,
-        },
-      },
-    }),
+    // multiTenantPlugin({
+    //   collections: {
+    //     users: {
+    //       useTenantAccess: true,
+    //       useBaseListFilter: true,
+    //     },
+    //     forms: {
+    //       useTenantAccess: true,
+    //       useBaseListFilter: true,
+    //     },
+    //     'form-submissions': {
+    //       useTenantAccess: true,
+    //       useBaseListFilter: true,
+    //     },
+    //   },
+    // }),
 
     // Form Builder plugin SECOND
     formBuilderPlugin({

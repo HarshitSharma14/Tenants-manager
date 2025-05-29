@@ -140,14 +140,7 @@ export interface Tenant {
  */
 export interface User {
   id: number;
-  tenant?: (number | null) | Tenant;
   role?: ('tenant-admin' | 'super-admin') | null;
-  tenants?:
-    | {
-        tenant: number | Tenant;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -464,14 +457,7 @@ export interface TenantsSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  tenant?: T;
   role?: T;
-  tenants?:
-    | T
-    | {
-        tenant?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   email?: T;
