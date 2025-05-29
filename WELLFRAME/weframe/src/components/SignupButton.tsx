@@ -7,8 +7,7 @@ export default function SignupButton() {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
-        retypePassword: '',
-        tenantName: ''
+        retypePassword: ''
     })
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
@@ -33,8 +32,7 @@ export default function SignupButton() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email: formData.email,
-                    password: formData.password,
-                    tenantName: formData.tenantName
+                    password: formData.password
                 })
             })
 
@@ -43,7 +41,7 @@ export default function SignupButton() {
             if (response.ok) {
                 setMessage('Account created successfully! You can now login with your credentials.')
                 setShowSignup(false)
-                setFormData({ email: '', password: '', retypePassword: '', tenantName: '' })
+                setFormData({ email: '', password: '', retypePassword: '' })
             } else {
                 setError(result.error || 'Signup failed')
             }
@@ -93,10 +91,8 @@ export default function SignupButton() {
                         fontWeight: 'bold',
                         transition: 'background-color 0.2s'
                     }}
-                    onMouseOver={(e) => (e.target as HTMLButtonElement).style.background = '#0052a3'}
-                    onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#0066cc'}
                 >
-                    Create Tenant Account
+                    Create Admin Account
                 </button>
             </div>
         )
@@ -116,7 +112,7 @@ export default function SignupButton() {
                 color: '#fff',
                 fontSize: '1.25rem'
             }}>
-                Create New Tenant Account
+                Create Admin Account
             </h3>
 
             {error && (
@@ -133,35 +129,6 @@ export default function SignupButton() {
             )}
 
             <form onSubmit={handleSignup}>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label style={{
-                        display: 'block',
-                        marginBottom: '0.5rem',
-                        fontWeight: 'bold',
-                        color: '#ccc',
-                        fontSize: '0.9rem'
-                    }}>
-                        Company/Tenant Name *
-                    </label>
-                    <input
-                        type="text"
-                        value={formData.tenantName}
-                        onChange={(e) => setFormData({ ...formData, tenantName: e.target.value })}
-                        required
-                        style={{
-                            width: '100%',
-                            padding: '0.75rem',
-                            border: '1px solid #444',
-                            borderRadius: '4px',
-                            fontSize: '1rem',
-                            boxSizing: 'border-box',
-                            backgroundColor: '#2a2a2a',
-                            color: '#fff'
-                        }}
-                        placeholder="Your Company Name"
-                    />
-                </div>
-
                 <div style={{ marginBottom: '1rem' }}>
                     <label style={{
                         display: 'block',
@@ -275,7 +242,7 @@ export default function SignupButton() {
                         onClick={() => {
                             setShowSignup(false)
                             setError('')
-                            setFormData({ email: '', password: '', retypePassword: '', tenantName: '' })
+                            setFormData({ email: '', password: '', retypePassword: '' })
                         }}
                         style={{
                             background: '#6c757d',
@@ -287,8 +254,6 @@ export default function SignupButton() {
                             fontSize: '1rem',
                             transition: 'background-color 0.2s'
                         }}
-                        onMouseOver={(e) => (e.target as HTMLButtonElement).style.background = '#5a6268'}
-                        onMouseOut={(e) => (e.target as HTMLButtonElement).style.background = '#6c757d'}
                     >
                         Cancel
                     </button>

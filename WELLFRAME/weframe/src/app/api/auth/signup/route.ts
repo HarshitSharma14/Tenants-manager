@@ -7,13 +7,6 @@ export async function POST(request: NextRequest) {
         const { email, password, tenantName } = await request.json()
         const payload = await getPayload({ config })
 
-        // Validation
-        if (!email || !password || !tenantName) {
-            return NextResponse.json({
-                error: 'Email, password, and tenant name are required'
-            }, { status: 400 })
-        }
-
         // Check if user already exists
         const existingUsers = await payload.find({
             collection: 'users',
@@ -26,7 +19,7 @@ export async function POST(request: NextRequest) {
             }, { status: 400 })
         }
 
-        // Create tenant first
+        // Create tenant
         const tenant = await payload.create({
             collection: 'tenants',
             data: {
@@ -35,14 +28,19 @@ export async function POST(request: NextRequest) {
             }
         })
 
-        // Create user with tenant
+        // Create user - the plugin will handle tenant assignments
         const user = await payload.create({
             collection: 'users',
             data: {
                 email,
                 password,
-                tenant: tenant.id,
-                role: 'tenant-admin'
+                role: 'tenant-admin',
+                // Plugin will automatically add tenants array field
+                tenants: [
+                    {
+                        tenant: tenant.id
+                    }
+                ]
             }
         })
 

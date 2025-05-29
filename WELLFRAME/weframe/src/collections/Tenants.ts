@@ -18,5 +18,12 @@ export const Tenants: CollectionConfig = {
             required: true,
             unique: true,
         },
+        {
+            name: 'domain',
+            type: 'text',
+            admin: {
+                description: 'Optional domain for this tenant'
+            }
+        }
     ],
 }
